@@ -95,6 +95,50 @@ When completing a session, add a new entry using this template:
 
 ---
 
+---
+
+## Session 5: Agentic Development - Building Workflows (Steps 5-1 through 5-3)
+**Date**: 2026-06-24
+
+### What Was Accomplished
+- **Step 5-1**: Fixed failing backend tests using TDD Red-Green-Refactor cycle — implemented all TODO API endpoints (GET all, GET by ID, POST, PUT, DELETE) with full CRUD functionality and proper HTTP status codes
+- **Step 5-2**: Resolved all ESLint errors across frontend and backend — removed unused variables, replaced `console.log` with appropriate alternatives, fixed style issues — all without breaking test coverage
+- **Step 5-3**: Completed all frontend features incrementally with TDD: delete todo, stats display (total/completed/pending), empty state messaging, and error handling for API failures
+
+### Key Findings
+- **TDD as documentation**: Tests define requirements precisely — reading failing tests reveals exactly what code must do before writing any implementation
+- **Red-Green-Refactor enforces focus**: Writing the minimal code to pass a test avoids over-engineering; refactor phase ensures quality without regression risk
+- **Lint errors by category**: Grouping ESLint errors by type (unused vars, console statements, style) makes batch-fixing far more efficient than one-at-a-time
+- **Frontend testing without E2E**: React Testing Library is sufficient to validate component behavior, conditional rendering, and user interactions before manual browser verification
+- **Incremental feature delivery**: Each small feature (delete, stats, empty state, error) was independently testable — catching regressions immediately
+
+### Decisions Made
+- **In-memory storage**: Backend uses array-based storage (no database) — sufficient for this phase, easy to test, eliminates DB setup complexity
+- **Error handling**: Frontend shows user-friendly error messages from API failures rather than crashing or silent failures
+- **Stats calculation**: Computed client-side from the todo list rather than a separate API call — simpler and avoids extra round-trips
+
+### Blockers Encountered
+- None — systematic TDD and lint-fix workflows resolved issues methodically without getting stuck
+
+### Outcomes
+- All backend tests passing with full CRUD API coverage
+- Zero ESLint errors in frontend and backend
+- Fully functional TODO application: create, delete, view stats, empty state, error handling
+- All changes committed to `feature/agentic-workflow` branch and pushed to origin
+
+### Next Steps
+- Merge `feature/agentic-workflow` into `main` via PR or direct merge to preserve completed work
+- Apply TDD workflow patterns to new projects and real-world features
+- Extend memory system documentation as new patterns emerge
+
+### Lessons Learned
+- **AI collaboration quality**: Providing context (test output, error messages, file locations) gives Copilot everything needed to generate correct fixes on the first attempt
+- **Workflow automation ROI**: The `/execute-step` prompt system from Step 5-0 paid off immediately in Steps 5-1 through 5-3 by reducing context-switching overhead
+- **Validation before commit**: Running lint AND tests before every commit prevents committing broken states that require extra fix commits
+- **Small commits = clear history**: Each step produced one focused commit with a conventional message — the git log tells the complete story of the session
+
+---
+
 ## Notes for Future Sessions
 
 After completing Session 5-1, 5-2, etc., add new session entries following the template above. Each entry becomes part of the project's institutional memory, helping AI work more effectively in future sessions.
